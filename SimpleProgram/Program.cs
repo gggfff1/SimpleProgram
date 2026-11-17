@@ -27,7 +27,8 @@ namespace SimpleProgram
                         "\nBENCH это простая программа для напряга" +
                         "\nHERALD какой ты рекрут по ммр" +
                         "\nRECTANGLE потроение прямоугольников произвольного размера" +
-                        "\nTRAINGLE построение треугольников");
+                        "\nTRAINGLE построение треугольников" +
+                        "\nARRAY построение массива из случайных чисел");
                 }
                 else
                 {
@@ -337,6 +338,69 @@ namespace SimpleProgram
                         Console.Write('#');
                     }
                     Console.WriteLine();
+                }
+            }
+        }
+
+        static void array()
+        {
+            while (true)
+            {
+                long elementsCount;
+                long[] Array;
+                try
+                {
+                    Console.WriteLine("Введите количество элементов в массиве, лимит элементов в массиве UInt64");
+                    elementsCount = long.Parse(Console.ReadLine());
+                    Array = new long[elementsCount];
+                }
+                catch (Exception) { continue; }
+                
+                Random randomNumber = new Random();
+                Console.WriteLine("Заполнение массива");
+                var timeStart= DateTime.Now;
+                for (long i = 0; i < Array.Length; i++)
+                {
+                    Console.WriteLine($"Генерация элемента массива под индексом {i}:");
+                    Array[i] = randomNumber.Next(9);
+                }
+
+                ulong evenCount = 0, oddCount = 0;
+                double evenSum = 0, oddSum = 0;
+
+                for (int i = 0; i < Array.Length; i++)
+                {
+                    long temp = int.Parse(Array[i].ToString());
+
+                    if (temp % 2 == 0)
+                    {
+                        evenCount++;
+                        evenSum += temp;
+                    }
+                    else
+                    {
+                        oddCount++;
+                        oddSum += temp;
+                    }
+
+                }
+                Console.WriteLine("Количество четных " + evenCount);
+                Console.WriteLine("Сумма четных " + evenSum);
+                Console.WriteLine("Количество нечетных " + oddCount);
+                Console.WriteLine("Сумма нечетных " + oddSum);
+
+                double theory = evenSum / evenCount;
+                double theory2 = oddSum / oddCount;
+                Console.Write("Нижняя граница: ");
+                Console.WriteLine(theory);
+                Console.Write("Верхняя граница: ");
+                Console.WriteLine(theory2);
+                Console.WriteLine("Время начала перебора " + timeStart);
+                Console.WriteLine("Время остановки перебора " + DateTime.Now);
+                Console.WriteLine("Нажмите Q, чтобы выйти");
+                if (Console.ReadKey().Key == ConsoleKey.Q)
+                {
+                    break;
                 }
             }
         }
