@@ -31,7 +31,9 @@ namespace SimpleProgram
                         "\nTRAINGLE построение треугольников" +
                         "\nARRAY построение массива из случайных чисел" +
                         "\nRARRAY вывод массива в обратном порядке" +
-                        "\nMAXMINARRAY максимальное и минимальное число");
+                        "\nMAXMINARRAY максимальное и минимальное число" +
+                        "\nTRANS дешифровка текста перепутанной раскладки" +
+                        "\nRANDOM генерация случайного числа");
                 }
                 else
                 {
@@ -452,5 +454,149 @@ namespace SimpleProgram
             Console.WriteLine("Максимальное " + maximal);
         }
 
+        static void trans()
+        {
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("Введите текст");
+                char[] array = Console.ReadLine().ToLower().ToCharArray();
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    switch (array[i])
+                    {
+                        case 'q':
+                            array[i] = 'й';
+                            break;
+                        case 'w':
+                            array[i] = 'ц';
+                            break;
+                        case 'e':
+                            array[i] = 'у';
+                            break;
+                        case 'r':
+                            array[i] = 'к';
+                            break;
+                        case 't':
+                            array[i] = 'е';
+                            break;
+                        case 'y':
+                            array[i] = 'н';
+                            break;
+                        case 'u':
+                            array[i] = 'г';
+                            break;
+                        case 'i':
+                            array[i] = 'ш';
+                            break;
+                        case 'o':
+                            array[i] = 'щ';
+                            break;
+                        case 'p':
+                            array[i] = 'з';
+                            break;
+                        case '[':
+                            array[i] = 'х';
+                            break;
+                        case ']':
+                            array[i] = 'ъ';
+                            break;
+                        case 'a':
+                            array[i] = 'ф';
+                            break;
+                        case 's':
+                            array[i] = 'ы';
+                            break;
+                        case 'd':
+                            array[i] = 'в';
+                            break;
+                        case 'f':
+                            array[i] = 'а';
+                            break;
+                        case 'g':
+                            array[i] = 'п';
+                            break;
+                        case 'h':
+                            array[i] = 'р';
+                            break;
+                        case 'j':
+                            array[i] = 'о';
+                            break;
+                        case 'k':
+                            array[i] = 'л';
+                            break;
+                        case 'l':
+                            array[i] = 'д';
+                            break;
+                        case ';':
+                            array[i] = 'ж';
+                            break;
+                        case '\'':
+                            array[i] = 'э';
+                            break;
+                        case 'z':
+                            array[i] = 'я';
+                            break;
+                        case 'x':
+                            array[i] = 'ч';
+                            break;
+                        case 'c':
+                            array[i] = 'с';
+                            break;
+                        case 'v':
+                            array[i] = 'м';
+                            break;
+                        case 'b':
+                            array[i] = 'и';
+                            break;
+                        case 'n':
+                            array[i] = 'т';
+                            break;
+                        case 'm':
+                            array[i] = 'ь';
+                            break;
+                        case ',':
+                            array[i] = 'б';
+                            break;
+                        case '.':
+                            array[i] = 'ю';
+                            break;
+                        case '/':
+                            array[i] = '.';
+                            break;
+                        case ' ':
+                            array[i] = ' ';
+                            break;
+                        case '`':
+                            array[i] = 'ё';
+                            break;
+                    }
+                }
+                for (int i = 0; i < array.Length; i++)
+                {
+                    Console.Write(array[i]);
+                }
+                Console.WriteLine("\n нажмите Q, чтобы вернуться в меню");
+            } while (Console.ReadKey().Key != ConsoleKey.Q);
+        }
+
+        static void random()
+        {
+            do
+            {
+                Console.WriteLine("Введите сторое число диапазона");
+                int[] Array = new int[10000];
+                Random randomNumber = new Random();
+                Console.WriteLine("Заполнение массива");
+                for (short i = 0; i < Array.Length; i++)
+                {
+                    //Console.WriteLine($"Генерация элемента массива под индексом {i}:");
+                    Array[i] = randomNumber.Next(100);
+                }
+                Console.WriteLine("Случайное число: " + Array[randomNumber.Next(10000)]);
+                Console.WriteLine("\n нажмите Q, чтобы вернуться в меню");
+            } while (Console.ReadKey().Key != ConsoleKey.Q);
+        }
     }
 }
