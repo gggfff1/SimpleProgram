@@ -1,8 +1,9 @@
-﻿using System.Net;
+﻿using System;
+using System.Linq;
+using System.Net;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
-using System;
 
 
 namespace SimpleProgram
@@ -28,7 +29,9 @@ namespace SimpleProgram
                         "\nHERALD какой ты рекрут по ммр" +
                         "\nRECTANGLE потроение прямоугольников произвольного размера" +
                         "\nTRAINGLE построение треугольников" +
-                        "\nARRAY построение массива из случайных чисел");
+                        "\nARRAY построение массива из случайных чисел" +
+                        "\nRARRAY вывод массива в обратном порядке" +
+                        "\nMAXMINARRAY максимальное и минимальное число");
                 }
                 else
                 {
@@ -405,6 +408,49 @@ namespace SimpleProgram
             }
         }
 
+        static void rarray()
+        {
+            Console.Write("Введите на сколько элементов рассчитан массив ");
+            int elementsCount = int.Parse(Console.ReadLine());
+            int[] myArray = new int[elementsCount];
+            Console.WriteLine("Заполните массив");
+            for (int i = 0; i < myArray.Length; i++)
+            {
+                Console.WriteLine($"Введите элемент массива под индексом {i}:");
+                myArray[i] = int.Parse(Console.ReadLine());
+            }
+
+            Console.WriteLine("Вывод массива в обратном порядке");
+
+            for (int i = myArray.Length - 1; i >= 0; i--)
+            {
+                Console.WriteLine(myArray[i]);
+            }
+        }
+
+        static void maxminarray()
+        {
+            Console.WriteLine("Введите числа, каждое число расценивается отдельным");
+            char[] nums = Console.ReadLine().ToArray();
+            int minimal = 0;
+            int maximal = 0;
+            minimal = int.Parse(nums[0].ToString());
+            for (int i = 0; i < nums.Length; i++)
+            {
+
+                int num = int.Parse(nums[i].ToString());
+                if (num < minimal)
+                {
+                    minimal = num;
+                }
+                if (num > maximal)
+                {
+                    maximal = num;
+                }
+            }
+            Console.WriteLine("Минимальное " + minimal);
+            Console.WriteLine("Максимальное " + maximal);
+        }
 
     }
 }
